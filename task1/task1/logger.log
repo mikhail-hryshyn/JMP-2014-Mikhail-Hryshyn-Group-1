@@ -1,0 +1,30 @@
+2014-10-05 23:31:47 INFO  App:26 - Entered value: sds
+2014-10-05 23:56:38 INFO  Task1:26 - Entered value: asd
+2014-10-05 23:56:38 INFO  JarClassLoader:58 - Warning : No jar file found. Packet unmarshalling won't be possible. Please verify your classpath
+2014-10-05 23:56:38 INFO  Task1:35 - java.lang.ClassNotFoundException: JarSample
+2014-10-06 01:10:38 INFO  JarClassLoader:62 - Warning : No jar file found. Please verify your path.
+2014-10-06 01:11:26 ERROR Task1:40 - java.lang.ClassNotFoundException: AppPluginImpl
+2014-10-06 01:14:15 INFO  JarClassLoader:62 - Warning : No jar file found. Please verify your path.
+2014-10-06 01:14:15 ERROR Task1:40 - java.lang.ClassNotFoundException: AppPluginImpl
+2014-10-06 01:15:01 INFO  JarClassLoader:62 - Warning : No jar file found. Please verify your path.
+2014-10-06 01:15:03 ERROR Task1:40 - java.lang.ClassNotFoundException: AppPluginImpl
+2014-10-06 01:22:07 INFO  JarClassLoader:62 - Warning : No jar file found. Please verify your path.
+2014-10-06 01:22:07 ERROR Task1:40 - java.lang.ClassNotFoundException: AppPluginImpl
+2014-10-06 01:22:27 INFO  JarClassLoader:76 - == loadClass(epam.jmp.task.classloader.core.IAppPlugin)
+2014-10-06 01:22:27 INFO  JarClassLoader:76 - == loadClass(java.lang.Object)
+2014-10-06 01:22:27 INFO  JarClassLoader:55 - == class epam.jmp.task.classloader.impl.AppPluginImpl loaded in cache
+2014-10-06 01:22:27 INFO  JarClassLoader:76 - == loadClass(AppPluginImpl)
+2014-10-06 01:22:27 INFO  JarClassLoader:76 - == loadClass(org.apache.log4j.Logger)
+2014-10-06 01:22:27 INFO  AppPluginImpl:13 - AppPluginImpl loaded.
+2014-10-06 01:30:01 INFO  JarClassLoader:76 - == loadClass(epam.jmp.task.classloader.core.IAppPlugin)
+2014-10-06 01:30:01 INFO  JarClassLoader:76 - == loadClass(java.lang.Object)
+2014-10-06 01:30:01 INFO  JarClassLoader:55 - == class epam.jmp.task.classloader.impl.AppPluginImpl loaded in cache
+2014-10-06 01:30:01 INFO  JarClassLoader:76 - == loadClass(AppPluginImpl)
+2014-10-06 01:30:01 INFO  JarClassLoader:76 - == loadClass(org.apache.log4j.Logger)
+2014-10-06 01:30:01 INFO  AppPluginImpl:13 - AppPluginImpl_1:  run execute().
+2014-10-06 01:30:21 INFO  JarClassLoader:76 - == loadClass(epam.jmp.task.classloader.core.IAppPlugin)
+2014-10-06 01:30:21 INFO  JarClassLoader:76 - == loadClass(java.lang.Object)
+2014-10-06 01:30:21 INFO  JarClassLoader:55 - == class epam.jmp.task.classloader.impl.AppPluginImpl loaded in cache
+2014-10-06 01:30:21 INFO  JarClassLoader:76 - == loadClass(AppPluginImpl)
+2014-10-06 01:30:21 INFO  JarClassLoader:76 - == loadClass(org.apache.log4j.Logger)
+2014-10-06 01:30:21 INFO  AppPluginImpl:13 - AppPluginImpl_2:  run execute().
