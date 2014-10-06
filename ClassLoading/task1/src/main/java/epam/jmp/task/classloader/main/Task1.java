@@ -35,7 +35,7 @@ public class Task1
 			IAppPlugin plugin = (IAppPlugin) clazz.newInstance();
 			plugin.execute();
 		}
-        catch (ClassNotFoundException e)
+        catch (ClassNotFoundException e) //FIXME: ClassCastException
 		{
         	logger.error(e);
 		}
