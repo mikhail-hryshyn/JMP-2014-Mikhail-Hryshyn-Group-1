@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import epam.jmp.task.classloader.JarClassLoader;
 import epam.jmp.task.classloader.core.IAppPlugin;
 import epam.jmp.task.classloader.main.Task1;
 
