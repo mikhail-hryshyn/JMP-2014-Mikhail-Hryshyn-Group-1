@@ -28,12 +28,31 @@ public class Task1
     	String pluginPackage = menuStr(
     			"Enter plugin package(default \"" + IAppPlugin.PLUGIN_PACKAGE + "\"): ", IAppPlugin.PLUGIN_PACKAGE);
 
-        JarClassLoader jarClassLoader = new JarClassLoader(pluginDir, jarFile, pluginPackage);
+    	loadPlugin(pluginDir, jarFile, pluginPackage);
+        
+    }
+    
+    public static Class<?> loadPlugin(String pluginDir, String jarFile, String pluginPackage) 
+    {
+    	JarClassLoader jarClassLoader = new JarClassLoader(pluginDir, jarFile, pluginPackage);
+    	Class<?> clazz = null;
         try
         {
-			Class<?> clazz = jarClassLoader.loadClass("AppPluginImpl");
-			IAppPlugin plugin = (IAppPlugin) clazz.newInstance();
-			plugin.execute();
+			clazz = jarClassLoader.loadClass("AppPluginImpl");
+			IAppPlugin plugin;
+			try
+			{
+				plugin = (IAppPlugin) clazz.newInstance();
+				plugin.execute();
+			}
+			catch (InstantiationException e)
+			{
+				logger.error(e);
+			}
+			catch (IllegalAccessException e)
+			{
+				logger.error(e);
+			}
 		}
         catch (ClassNotFoundException e)
 		{
@@ -43,6 +62,8 @@ public class Task1
         {
         	logger.error(e1);
         }
+        
+        return clazz;
     }
     
     /**
@@ -50,7 +71,7 @@ public class Task1
      * @param defValue
      * @return
      */
-    private static String menuStr(String menuStr, String defValue)
+    public static String menuStr(String menuStr, String defValue)
     {
     	System.out.print(menuStr);
     		

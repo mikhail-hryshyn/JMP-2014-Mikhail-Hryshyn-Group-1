@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import epam.jmp.task.classloader.JarClassLoader;
 import epam.jmp.task.classloader.core.IAppPlugin;
+import epam.jmp.task.classloader.main.Task1;
 
 public class App 
 {
@@ -65,12 +66,12 @@ public class App
 		Map<Integer, Class<?>> clazzMap = new HashMap<Integer, Class<?>>();
 		int i = 1;
 		
-		String pluginDir = menuStr(
+		String pluginDir = Task1.menuStr(
     			"Enter plugin folder(default \"" + IAppPlugin.PLUGIN_DIR + "\"): ", IAppPlugin.PLUGIN_DIR);
-    	String jarFile = menuStr(
+    	String jarFile = Task1.menuStr(
     			"Enter plugin jar-file name: ", "");
     	
-    	String pluginPackage = menuStr(
+    	String pluginPackage = Task1.menuStr(
     			"Enter plugin package(default \"" + IAppPlugin.PLUGIN_PACKAGE + "\"): ", IAppPlugin.PLUGIN_PACKAGE);
 		
 		try
@@ -79,22 +80,8 @@ public class App
 			{
 				logger.info( "Step " + String.valueOf(i));
 
-		        JarClassLoader jarClassLoader = new JarClassLoader(pluginDir, jarFile, pluginPackage);
-		        try
-		        {
-					Class<?> clazz = jarClassLoader.loadClass("AppPluginImpl");
-					IAppPlugin plugin = (IAppPlugin) clazz.newInstance();
-					plugin.execute();
-					clazzMap.put(i++, clazz);
-				}
-		        catch (ClassNotFoundException e)
-				{
-		        	logger.error(e);
-				}
-		        catch (ClassCastException e1)
-		        {
-		        	logger.error(e1);
-		        }
+				Class<?> clazz = Task1.loadPlugin(pluginDir, jarFile, pluginPackage);
+				clazzMap.put(i++, clazz);
 			}
 		}
 		catch (Throwable e)
@@ -134,31 +121,4 @@ public class App
 		
 		return defValue;
 	}
-	
-	private static String menuStr(String menuStr, String defValue)
-    {
-    	System.out.print(menuStr);
-    		
-    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        String inputValue = null;
-        try
-        {
-           inputValue = br.readLine();
-        }
-        catch (IOException ioe)
-        {
-           System.out.println("IO error! Default value: " + defValue);
-           System.exit(1);
-        }
-        
-        if (!(inputValue == null || inputValue.isEmpty()))
-        {
-        	return inputValue;
-        }
-        else
-        {
-        	return defValue;
-        }
-    }
 }
