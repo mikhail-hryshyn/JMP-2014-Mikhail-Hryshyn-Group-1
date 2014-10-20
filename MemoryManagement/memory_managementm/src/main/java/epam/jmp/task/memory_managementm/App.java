@@ -80,6 +80,10 @@ public class App
 				logger.info( "Step " + String.valueOf(i));
 
 				Class<?> clazz = Task1.loadPlugin(pluginDir, jarFile, pluginPackage);
+				
+				if (clazz == null)
+					return;
+				
 				clazzMap.put(i++, clazz);
 			}
 		}
