@@ -24,7 +24,17 @@ public class AccountFactory
 			+ "/" + Account.ACCOUNT_NODE_NAME
 			+ "[" + Account.NUMBER_NODE_NAME + "= '%s']";
 	
-	private File f = new File(App.ACCOUNT_FILE_NAME);
+	private File f;
+	
+	public AccountFactory()
+	{
+		this(App.ACCOUNT_FILE_NAME);
+	}
+	
+	public AccountFactory(String fileName)
+	{
+		f = new File(fileName);
+	}
 	
 	public Account getAccountByNumber(DocumentBuilder builder, String number) throws Exception
 	{

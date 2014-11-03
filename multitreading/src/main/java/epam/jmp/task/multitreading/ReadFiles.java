@@ -6,6 +6,7 @@ import java.util.concurrent.ConcurrentMap;
 import org.apache.log4j.Logger;
 
 import epam.jmp.task.multitreading.data.Account;
+import epam.jmp.task.multitreading.data.AccountFactory;
 import epam.jmp.task.multitreading.data.Currency;
 import epam.jmp.task.multitreading.data.Person;
 import epam.jmp.task.multitreading.data.PersonFactory;
@@ -16,10 +17,12 @@ public class ReadFiles implements Runnable
 	static final Logger logger = Logger.getLogger(ReadFiles.class);
 	
 	private PersonFactory pf;
+	private AccountFactory af;
 	
-	public ReadFiles(PersonFactory pf)
+	public ReadFiles(PersonFactory pf, AccountFactory af)
 	{
 		this.pf = pf;
+		this.af = af;
 	}
 	public void run()
 	{
@@ -27,7 +30,7 @@ public class ReadFiles implements Runnable
 		
 		try
 		{
-			List<Person> persons = pf.getAllPerson();
+			List<Person> persons = pf.getAllPerson(af);
 			
 			for (Person person : persons)
 			{

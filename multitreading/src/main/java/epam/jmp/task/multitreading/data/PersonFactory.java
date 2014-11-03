@@ -25,10 +25,20 @@ public class PersonFactory
 			+ "/" + Person.PERSON_NODE_NAME
 			+ "[" + Person.ID_NODE_NAME + "= '%s']";
 	
-	private File f = new File(App.PERSON_FILE_NAME);
+	private File f;
 	private DocumentBuilder builder = XmlUtils.getDocumentBuilder();
 	
-	public synchronized List<Person> getAllPerson() throws Exception
+	public PersonFactory()
+	{
+		this(App.PERSON_FILE_NAME);
+	}
+	
+	public PersonFactory(String fileName)
+	{
+		f = new File(fileName);
+	}
+	
+	public synchronized List<Person> getAllPerson(AccountFactory af) throws Exception
 	{
 		if (!f.exists())
 		{
@@ -49,13 +59,13 @@ public class PersonFactory
 		NodeList nodeList = doc.getElementsByTagName(Person.ID_NODE_NAME);
 		for (int i = 0; i < nodeList.getLength(); i++)
 		{
-			p.add(getPersonById(doc, nodeList.item(i).getFirstChild().getNodeValue()));
+			p.add(getPersonById(af, doc, nodeList.item(i).getFirstChild().getNodeValue()));
 		}
 		
 		return p;
 	}
 	
-	private synchronized Person getPersonById(Document doc, String id) throws Exception
+	private synchronized Person getPersonById(AccountFactory af, Document doc, String id) throws Exception
 	{
 		XPath xPath =  XPathFactory.newInstance().newXPath();
 		
@@ -69,8 +79,6 @@ public class PersonFactory
 		p.setFirstName(xPath.compile(fnExp).evaluate(doc));
 		p.setLastName(xPath.compile(lnExp).evaluate(doc));
 		
-		AccountFactory af = new AccountFactory();
-		
 		NodeList nodeList = (NodeList) xPath.compile(aExp).evaluate(doc, XPathConstants.NODESET);
 		for (int i = 0; i < nodeList.getLength(); i++)
 		{
@@ -80,7 +88,7 @@ public class PersonFactory
 		return p;
 	}
 	
-	public synchronized void createPersons() throws Exception
+	public synchronized void createPersons(AccountFactory af) throws Exception
 	{
 		if (!f.exists())
 		{
@@ -105,7 +113,6 @@ public class PersonFactory
 				Element elAccounts = XmlUtils.createNode(doc, Person.ACCOUNTS_NODE_NAME, null);
 				elPerson.appendChild(elAccounts);
 				
-				AccountFactory af = new AccountFactory();
 				List<String> iDs = af.createAccounts(builder);
 				for (String id : iDs)
 				{
