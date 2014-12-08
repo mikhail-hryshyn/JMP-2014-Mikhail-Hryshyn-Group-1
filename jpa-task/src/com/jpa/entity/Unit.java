@@ -17,10 +17,10 @@ public class Unit implements Serializable {
 	   
 	@Id
 	@GeneratedValue
-	private int id;
+	private int unit_id;
 	private String unitName;
 	
-	@OneToMany(targetEntity = Employee.class, mappedBy = "unit")
+	@OneToMany(mappedBy = "unit")
 	private Collection<Employee> employees;
 
 	public Collection<Employee> getEmployees() {
@@ -33,11 +33,11 @@ public class Unit implements Serializable {
 		super();
 	}   
 	public int getId() {
-		return this.id;
+		return this.unit_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.unit_id = id;
 	}   
 	public String getUnitName() {
 		return this.unitName;

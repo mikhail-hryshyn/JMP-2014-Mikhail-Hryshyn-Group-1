@@ -16,19 +16,22 @@ public class Personal implements Serializable {
 	   
 	@Id
 	@GeneratedValue
-	private int id;
+	private int personal_id;
 	private String info;
+	
+	@OneToOne(mappedBy = "personal")
+	private Employee employee;
 	
 
 	public Personal() {
 		super();
 	}   
 	public int getId() {
-		return this.id;
+		return this.personal_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.personal_id = id;
 	}   
    
 	public String getInfo() {
@@ -37,6 +40,13 @@ public class Personal implements Serializable {
 
 	public void setInfo(String info) {
 		this.info = info;
+	}
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
    
 }

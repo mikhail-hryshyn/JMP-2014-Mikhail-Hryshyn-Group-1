@@ -38,6 +38,7 @@ public class EmployeeFactory {
 	public void delete(int id)
 	{
 		em.remove(getById(id));
+		em.flush();
 	}
 	
 	public Employee getById(int id)
