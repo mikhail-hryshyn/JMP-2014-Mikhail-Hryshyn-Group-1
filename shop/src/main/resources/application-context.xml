@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="product1" class="org.shop.data.Product">
+        <property name="id" value="1" />
+        <property name="name" value="Product 1" />
+        <property name="description" value="Description by product 1." />
+    </bean>
+    
+    <bean name="product2" class="org.shop.data.Product">
+        <property name="id" value="2" />
+        <property name="name" value="Product 2" />
+        <property name="description" value="Description by product 2." />
+    </bean>
+    
+    <bean name="product3" class="org.shop.data.Product">
+        <property name="id" value="3" />
+        <property name="name" value="Product 3" />
+        <property name="description" value="Description by product 3." />
+    </bean>
+    
+    <alias name="product3" alias="alias_p3"/>
+
+</beans>
